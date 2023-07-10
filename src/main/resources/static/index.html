@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+</head>
+<body>
+<noscript>
+    <h2>Sorry! Your browser doesn't support Javascript</h2>
+</noscript>
+
+<div id="username-page">
+    <div class="username-page-container">
+        <h1 style="color: black;" class="title">Type your username to enter the chat</h1>
+        <form id="usernameForm" name="usernameForm">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="accent username-submit">Start Chatting</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="chat-page" class="hidden">
+    <div class="chat-container input-group clearfix">
+        <div class="chat-header">
+            <h2>Erik's General chat</h2>
+            <button class="theme-button" onclick="toggleTheme()">Change Theme</button>
+            <button id="leaveButton" class="leave" onclick="leaveChat()">Leave</button>
+        </div>
+        <div class="connecting">Connecting...</div>
+        <ul id="messageArea"></ul>
+        <form id="messageForm" name="messageForm">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                    <button type="submit" class="primary">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+function createCopyButton(messageElement, messageText) {
+  var copyButton = document.createElement('button');
+  copyButton.textContent = 'Copy';
+  copyButton.classList.add('copy-button');
+  copyButton.addEventListener('click', function () {
+    copyTextToClipboard(messageText);
+  });
+
+  var existingCopyButton = messageElement.querySelector('.copy-button');
+  if (!existingCopyButton) {
+    messageElement.appendChild(copyButton);
+  }
+}
+
+function handleNewMessageMutation(mutation) {
+  if (mutation.type === 'childList') {
+    mutation.addedNodes.forEach(function (node) {
+      if (node.classList && node.classList.contains('chat-message')) {
+        var messageElement = node;
+        var textElement = messageElement.querySelector('p');
+        var messageText = textElement.textContent;
+        createCopyButton(messageElement, messageText);
+      }
+    });
+  }
+}
+
+var messageAreaObserver = new MutationObserver(function (mutations) {
+  mutations.forEach(handleNewMessageMutation);
+});
+
+messageAreaObserver.observe(document.getElementById('messageArea'), { childList: true });
+
+var existingMessages = document.getElementsByClassName('chat-message');
+Array.prototype.forEach.call(existingMessages, function (messageElement) {
+  var textElement = messageElement.querySelector('p');
+  var messageText = textElement.textContent;
+  createCopyButton(messageElement, messageText);
+});
+</script>
+
+</body>
+</html>

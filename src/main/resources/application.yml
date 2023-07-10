@@ -1,0 +1,11 @@
+server:
+  port: 8000
+
+spring:
+  profiles:
+    active: production
+
+logging:
+  level:
+    root: INFO
+    com.erik.websocket.chat: DEBUG

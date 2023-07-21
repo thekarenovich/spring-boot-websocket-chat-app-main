@@ -1,9 +1,5 @@
 server:
-  port: 8999
-
-spring:
-  profiles:
-    active: local
+  port: 8123
 
 logging:
   level:

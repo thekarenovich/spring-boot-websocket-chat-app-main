@@ -1,9 +1,9 @@
 server:
-  port: 8999
+  port: 8080
 
 spring:
   profiles:
-    active: local
+    active: dev
 
 logging:
   level:

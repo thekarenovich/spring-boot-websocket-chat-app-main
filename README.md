@@ -1,5 +1,3 @@
-Конечно, я готов помочь вам создать красивый README.md для вашего проекта Spring Boot WebSocket Chat Application на GitHub. Вот шаблон, который вы можете использовать:
-
 # Spring Boot WebSocket Chat App
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/thekarenovich/spring-boot-websocket-chat-app-main)

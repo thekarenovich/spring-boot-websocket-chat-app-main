@@ -1,9 +1,5 @@
 # Spring Boot WebSocket Chat App
 
-![GitHub last commit](https://img.shields.io/github/last-commit/thekarenovich/spring-boot-websocket-chat-app-main)
-![GitHub issues](https://img.shields.io/github/issues-raw/thekarenovich/spring-boot-websocket-chat-app-main)
-![GitHub stars](https://img.shields.io/github/stars/thekarenovich/spring-boot-websocket-chat-app-main?style=social)
-
 Простое приложение для обмена сообщениями на основе WebSocket, построенное на Spring Boot. Позволяет пользователям присоединяться к чат-комнатам, отправлять и получать сообщения и многое другое.
 
 ## Содержание

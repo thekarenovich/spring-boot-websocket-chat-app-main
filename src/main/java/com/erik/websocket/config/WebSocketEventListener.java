@@ -1,7 +1,7 @@
 package com.erik.websocket.config;
 
-import com.erik.websocket.chat.ChatMessage;
-import com.erik.websocket.chat.MessageType;
+import com.erik.websocket.model.MessageType;
+import com.erik.websocket.payload.ChatMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;

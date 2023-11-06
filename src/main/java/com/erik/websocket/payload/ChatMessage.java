@@ -1,5 +1,6 @@
-package com.erik.websocket.chat;
+package com.erik.websocket.payload;
 
+import com.erik.websocket.model.MessageType;
 import lombok.*;
 
 @Getter
